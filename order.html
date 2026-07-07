@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Order - Kamal Creation</title>
+
+<link rel="icon" href="logo.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+background:
+radial-gradient(circle at top,#3a2500 0%,#0b0b0b 35%,#000 100%);
+color:white;
+font-family:'Poppins',sans-serif;
+margin:0;
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:120px 20px 40px;
+}
+
+.container{
+width:100%;
+max-width:600px;
+padding:40px;
+background:rgba(255,255,255,.05);
+backdrop-filter:blur(15px);
+-webkit-backdrop-filter:blur(15px);
+border:1px solid rgba(255,215,0,.18);
+border-radius:25px;
+box-shadow:0 20px 50px rgba(0,0,0,.45);
+}
+
+h1{
+    text-align:center;
+    color:gold;
+}
+
+input,select,textarea{
+width:100%;
+padding:15px;
+margin:12px 0;
+background:rgba(255,255,255,.06);
+border:1px solid rgba(255,215,0,.2);
+border-radius:12px;
+color:white;
+font-size:16px;
+outline:none;
+transition:.3s;
+box-sizing:border-box;
+}
+
+input::placeholder,
+textarea::placeholder{
+color:#bbb;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+border-color:#FFD700;
+box-shadow:0 0 15px rgba(255,215,0,.3);
+}
+
+button{
+width:100%;
+padding:16px;
+margin-top:15px;
+background:linear-gradient(135deg,#FFD700,#f7b500);
+color:#111;
+border:none;
+border-radius:50px;
+font-size:18px;
+font-weight:600;
+cursor:pointer;
+transition:.3s;
+}
+
+button:hover{
+transform:translateY(-4px);
+box-shadow:0 15px 30px rgba(255,215,0,.35);
+}
+
+header{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 8%;
+background:rgba(10,10,10,.55);
+backdrop-filter:blur(18px);
+-webkit-backdrop-filter:blur(18px);
+border-bottom:1px solid rgba(255,215,0,.18);
+z-index:1000;
+}
+
+.logo{
+font-family:'Cinzel',serif;
+font-size:30px;
+font-weight:bold;
+color:#FFD700;
+letter-spacing:2px;
+}
+
+.back-btn{
+color:#FFD700;
+text-decoration:none;
+border:1px solid #FFD700;
+padding:10px 18px;
+border-radius:30px;
+transition:.3s;
+}
+
+.back-btn:hover{
+background:#FFD700;
+color:#000;
+}
+
+</style>
+</head>
+
+<body>
+
+ <header>
+
+<div class="logo">
+KAMAL CREATION
+</div>
+
+<a href="index.html" class="back-btn">
+← Home
+</a>
+
+</header>
+
+<div class="container">
+
+<h1>Place Your Order</h1>
+
+<input type="text" placeholder="Your Name">
+
+<input type="tel" placeholder="Mobile Number" maxlength="10" inputmode="numeric" pattern="[0-9]{10}">
+
+<input type="number" placeholder="Number of Photos" min="1">
+
+<select>
+<option>Wedding Album</option>
+<option>Pre-Wedding Album</option>
+<option>Birthday Album</option>
+<option>Engagement Album</option>
+<option>Baby Shoot Album</option>
+</select>
+
+<select>
+<option>12x36 Album</option>
+<option>12x30 Album</option>
+<option>10x24 Album</option>
+<option>Other Size</option>
+</select>
+
+<textarea rows="4" placeholder="Address / Delivery Details / Any Special Instructions"></textarea>
+
+<button onclick="sendToWhatsApp()">
+Order on WhatsApp
+</button>
+
+</div>
+
+<script>
+
+function sendToWhatsApp(){
+
+let name = document.querySelector('input[type="text"]').value;
+
+let mobile = document.querySelector('input[type="tel"]').value;
+
+if(name=="" || mobile==""){
+alert("Please enter your Name and Mobile Number.");
+return;
+}
+
+if(mobile.length!=10){
+alert("Please enter a valid 10 digit Mobile Number.");
+return;
+}
+
+let photos = document.querySelector('input[type="number"]').value;
+
+let albumType = document.querySelectorAll('select')[0].value;
+
+let albumSize = document.querySelectorAll('select')[1].value;
+
+let details = document.querySelector('textarea').value;
+
+let message =
+`Hello Kamal Creation!
+
+Name: ${name}
+Mobile: ${mobile}
+Number of Photos: ${photos}
+
+Album Type: ${albumType}
+Album Size: ${albumSize}
+
+Details:
+${details}`;
+
+window.open(
+`https://wa.me/919919151255?text=${encodeURIComponent(message)}`,
+"_blank"
+);
+
+}
+
+</script>
+</body>
+</html>

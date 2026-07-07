@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kamal Creation</title>
+<link rel="icon" href="logo.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+    scroll-behavior:smooth;
+}
+
+body{
+    background:
+    radial-gradient(circle at top,#3a2500 0%,#0b0b0b 35%,#000 100%);
+    color:#fff;
+    overflow-x:hidden;
+}
+
+header{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 8%;
+background:rgba(10,10,10,.55);
+backdrop-filter:blur(18px);
+-webkit-backdrop-filter:blur(18px);
+border-bottom:1px solid rgba(255,215,0,.18);
+box-shadow:0 10px 35px rgba(0,0,0,.35);
+z-index:1000;
+transition:.4s;
+}
+
+.logo{
+    color:#FFD700;
+    font-size:30px;
+    font-weight:bold;
+    font-family:'Cinzel',serif;
+    letter-spacing:2px;
+}
+nav{
+    display:flex;
+    gap:30px;
+}
+
+nav a{
+color:#f5f5f5;
+text-decoration:none;
+font-weight:500;
+letter-spacing:.5px;
+padding:8px 14px;
+border-radius:30px;
+transition:.35s;
+}
+
+nav a:hover{
+color:#FFD700;
+background:rgba(255,215,0,.08);
+}
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:120px 8% 60px;
+    gap:60px;
+}
+
+.hero-text{
+    flex:1;
+}
+
+.hero-text h1{
+    font-size:68px;
+    color:#FFD700;
+    font-family:'Cinzel',serif;
+    letter-spacing:3px;
+    line-height:1.1;
+    text-shadow:
+        0 0 10px rgba(255,215,0,.4),
+        0 0 25px rgba(255,215,0,.2);
+}
+
+.hero-text h2{
+    margin:15px 0;
+    font-size:30px;
+}
+
+.hero-text p{
+    color:#ddd;
+    line-height:1.8;
+    margin-bottom:30px;
+}
+.btn{
+display:inline-block;
+padding:16px 38px;
+border-radius:50px;
+background:linear-gradient(135deg,#FFD700,#f7b500);
+color:#111;
+text-decoration:none;
+font-weight:600;
+letter-spacing:.5px;
+margin-right:15px;
+margin-bottom:15px;
+box-shadow:0 10px 30px rgba(255,215,0,.35);
+transition:.35s;
+}
+
+.btn:hover{
+transform:translateY(-6px) scale(1.05);
+box-shadow:0 18px 40px rgba(255,215,0,.45);
+}
+
+.hero-image{
+    flex:1;
+}
+
+.hero-image img{
+width:100%;
+max-height:560px;
+object-fit:cover;
+border-radius:30px;
+padding:10px;
+background:linear-gradient(135deg,#FFD700,#8a6700,#FFD700);
+box-shadow:
+0 0 30px rgba(255,215,0,.35),
+0 25px 60px rgba(0,0,0,.55);
+transition:.5s;
+}
+
+.hero-image img:hover{
+transform:scale(1.04) rotate(.5deg);
+box-shadow:
+0 0 45px rgba(255,215,0,.5),
+0 30px 70px rgba(0,0,0,.65);
+}
+
+section{
+    padding:120px 8% 90px;
+}
+#gallery{
+    scroll-margin-top:140px;
+}
+.section-title{
+    text-align:center;
+    color:#FFD700;
+    font-size:45px;
+    margin-bottom:50px;
+}
+
+.services-box{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.card{
+background:rgba(255,255,255,.04);
+backdrop-filter:blur(14px);
+-webkit-backdrop-filter:blur(14px);
+border:1px solid rgba(255,215,0,.15);
+border-radius:25px;
+padding:45px 35px;
+text-align:center;
+transition:.4s;
+box-shadow:0 15px 40px rgba(0,0,0,.35);
+}
+
+.card:hover{
+transform:translateY(-12px);
+border-color:#FFD700;
+box-shadow:0 20px 45px rgba(255,215,0,.18);
+}
+
+.card span{
+font-size:60px;
+display:block;
+margin-bottom:15px;
+filter:drop-shadow(0 0 8px rgba(255,215,0,.35));
+}
+
+.card h3{
+margin-top:15px;
+font-size:22px;
+font-weight:600;
+color:#fff;
+}
+
+.gallery-box{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.photo{
+background:rgba(255,255,255,.04);
+backdrop-filter:blur(12px);
+-webkit-backdrop-filter:blur(12px);
+border:1px solid rgba(255,215,0,.12);
+border-radius:22px;
+overflow:hidden;
+padding:12px;
+transition:.4s;
+box-shadow:0 15px 35px rgba(0,0,0,.35);
+}
+
+.photo img{
+width:100%;
+height:auto;
+display:block;
+border-radius:15px;
+transition:.45s;
+}
+
+.photo:hover{
+transform:translateY(-10px);
+border-color:#FFD700;
+box-shadow:0 20px 45px rgba(255,215,0,.22);
+}
+
+.photo:hover img{
+transform:scale(1.06);
+}
+.contact-box{
+max-width:700px;
+margin:auto;
+text-align:center;
+background:rgba(255,255,255,.04);
+backdrop-filter:blur(15px);
+-webkit-backdrop-filter:blur(15px);
+border:1px solid rgba(255,215,0,.15);
+padding:50px;
+border-radius:25px;
+box-shadow:0 18px 45px rgba(0,0,0,.35);
+transition:.4s;
+}
+
+.contact-box:hover{
+transform:translateY(-8px);
+border-color:#FFD700;
+box-shadow:0 20px 50px rgba(255,215,0,.22);
+}
+
+.contact-box p{
+margin:18px 0;
+font-size:20px;
+color:#e8e8e8;
+letter-spacing:.4px;
+}
+
+footer{
+margin-top:70px;
+padding:35px 20px;
+text-align:center;
+background:rgba(255,255,255,.03);
+border-top:1px solid rgba(255,215,0,.12);
+color:#bbb;
+font-size:15px;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+header{
+flex-direction:column;
+gap:15px;
+}
+
+nav{
+flex-wrap:wrap;
+justify-content:center;
+gap:15px;
+}
+
+.hero{
+flex-direction:column;
+text-align:center;
+padding:150px 20px 60px;
+}
+
+.hero-text h1{
+font-size:42px;
+}
+
+.hero-text h2{
+font-size:22px;
+}
+
+.hero-image{
+    width:100%;
+}
+
+.hero-image img{
+    width:100%;
+    max-height:420px;
+    object-fit:cover;
+}
+
+.btn{
+display:block;
+margin:15px auto;
+max-width:260px;
+}
+
+.services-box{
+grid-template-columns:1fr;
+}
+
+.gallery-box{
+grid-template-columns:1fr;
+}
+
+.section-title{
+font-size:34px;
+}
+
+}
+.rating{
+margin-top:25px;
+color:#FFD700;
+font-size:24px;
+font-weight:600;
+}
+
+.rating span{
+display:block;
+font-size:15px;
+color:#ddd;
+margin-top:8px;
+letter-spacing:.5px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+KAMAL CREATION
+</div>
+
+<nav>
+
+<a href="#home">Home</a>
+
+<a href="#services">Services</a>
+
+<a href="#gallery">Gallery</a>
+
+<a href="order.html">Order</a>
+
+<a href="#contact">Contact</a>
+
+</nav>
+
+</header>
+
+<section class="hero" id="home">
+
+<div class="hero-text">
+
+<h1>KAMAL CREATION</h1>
+
+<h2>Premium Wedding Album Designing</h2>
+
+<p>
+Luxury Wedding Albums • Pre Wedding • Birthday • Engagement • Baby Shoot • Custom Album Designing with Premium Quality.
+</p>
+<div class="rating">
+★★★★★
+<span>500+ Happy Clients • 1000+ Album Designs</span>
+</div>
+
+<a href="#gallery" class="btn">View Gallery</a>
+
+<a href="https://wa.me/919919151255?text=Hello%20Kamal%20Creation,%20I%20want%20to%20order%20an%20album."
+class="btn"
+target="_blank"
+rel="noopener">
+💬 Order Now on WhatsApp
+</a>
+
+</div>
+
+<div class="hero-image">
+
+<img src="hero.png"
+alt="Luxury Wedding Album"
+loading="eager"
+decoding="async"
+width="700"
+height="700">
+
+</div>
+
+</section>
+<section id="services">
+
+<h2 class="section-title">Our Services</h2>
+
+<div class="services-box">
+
+<div class="card">
+<span>💍</span>
+<h3>Wedding Albums</h3>
+</div>
+
+<div class="card">
+<span>📸</span>
+<h3>Pre-Wedding Albums</h3>
+</div>
+
+<div class="card">
+<span>🎂</span>
+<h3>Birthday Albums</h3>
+</div>
+
+<div class="card">
+<span>💑</span>
+<h3>Engagement Albums</h3>
+</div>
+
+<div class="card">
+<span>👶</span>
+<h3>Baby Shoot Albums</h3>
+</div>
+
+<div class="card">
+<span>🎨</span>
+<h3>Custom Album Design</h3>
+</div>
+
+</div>
+
+</section>
+
+<section id="gallery">
+
+<h2 class="section-title">Our Gallery</h2>
+
+<div class="gallery-box">
+
+<div class="photo">
+<img src="gallery1.png"
+alt="Premium Wedding Album Design 1"
+loading="lazy"
+decoding="async"
+width="600"
+height="600">
+</div>
+
+<div class="photo">
+<img src="gallery2.png"
+alt="Wedding Album Design 2"
+loading="lazy"
+decoding="async"
+width="600"
+height="600">
+</div>
+
+<div class="photo">
+<img src="gallery3.png"
+alt="Luxury Album Design 3"
+loading="lazy"
+decoding="async"
+width="600"
+height="600">
+</div>
+
+<div class="photo">
+<img src="gallery4.png"
+alt="Pre Wedding Album Design 4"
+loading="lazy"
+decoding="async"
+width="600"
+height="600">
+</div>
+
+<div class="photo">
+<img src="gallery5.png"
+alt="Custom Wedding Album Design 5"
+loading="lazy"
+decoding="async"
+width="600"
+height="600">
+</div>
+
+<div class="photo">
+<img src="gallery6.png"
+alt="Premium Wedding Album Design 6"
+loading="lazy"
+decoding="async"
+width="600"
+height="600">
+</div>
+
+</div>
+
+</section>
+
+<section id="contact">
+
+<h2 class="section-title">Contact Us</h2>
+
+<div class="contact-box">
+
+<p>
+📞 <a href="tel:+919919151255" style="color:#FFD700;text-decoration:none;">
++91 91919151255
+</a>
+</p>
+
+<p>📍 Uttar Pradesh, India</p>
+
+<p>💬 WhatsApp Available</p>
+
+<a href="order.html" class="btn">Place Your Order</a>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>© 2027 Kamal Creation. All Rights Reserved.</p>
+
+<p>Premium Wedding Album Designing • Uttar Pradesh • India</p>
+
+</footer>
+
+</body>
+</html>
+
