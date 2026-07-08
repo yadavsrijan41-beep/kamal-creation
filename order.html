@@ -25,7 +25,7 @@ min-height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-padding:120px 20px 40px;
+padding:90px 20px 40px;
 }
 
 .container{
@@ -98,7 +98,7 @@ width:100%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:18px 8%;
+padding:12px 5%;
 background:rgba(10,10,10,.55);
 backdrop-filter:blur(18px);
 -webkit-backdrop-filter:blur(18px);
@@ -108,24 +108,56 @@ z-index:1000;
 
 .logo{
 font-family:'Cinzel',serif;
-font-size:30px;
+font-size:24px;
 font-weight:bold;
 color:#FFD700;
-letter-spacing:2px;
+letter-spacing:1px;
+white-space:nowrap;
 }
-
 .back-btn{
 color:#FFD700;
 text-decoration:none;
 border:1px solid #FFD700;
-padding:10px 18px;
-border-radius:30px;
+padding:8px 14px;
+border-radius:25px;
+font-size:15px;
 transition:.3s;
 }
 
 .back-btn:hover{
 background:#FFD700;
 color:#000;
+}
+@media(max-width:768px){
+
+.container{
+    padding:25px;
+    margin-top:20px;
+}
+
+.logo{
+    font-size:18px;
+}
+
+.back-btn{
+    font-size:13px;
+    padding:7px 12px;
+}
+
+h1{
+    font-size:32px;
+}
+
+input,
+select,
+textarea{
+    font-size:15px;
+}
+
+button{
+    font-size:16px;
+}
+
 }
 
 </style>
@@ -148,6 +180,9 @@ KAMAL CREATION
 <div class="container">
 
 <h1>Place Your Order</h1>
+<p class="subtitle">
+Fill the details below and we'll contact you on WhatsApp.
+</p>
 
 <input type="text" placeholder="Your Name">
 
@@ -209,7 +244,7 @@ let message =
 
 Name: ${name}
 Mobile: ${mobile}
-Number of Photos: ${photos}
+Number of Photos: ${photos || "Not Mentioned"}
 
 Album Type: ${albumType}
 Album Size: ${albumSize}
