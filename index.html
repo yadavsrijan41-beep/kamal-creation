@@ -321,19 +321,48 @@ position:absolute;
 top:70px;
 left:0;
 width:100%;
-background:#111;
+
+background:rgba(15,15,15,.92);
+backdrop-filter:blur(18px);
+-webkit-backdrop-filter:blur(18px);
+
+border-top:1px solid rgba(255,215,0,.15);
+border-bottom:1px solid rgba(255,215,0,.15);
+
+box-shadow:0 15px 40px rgba(0,0,0,.5);
+
 flex-direction:column;
 text-align:center;
-padding:20px 0;
+padding:15px 0;
+
+opacity:0;
+visibility:hidden;
+transform:translateY(-15px);
+transition:.35s ease;
 }
 
 nav.active{
 display:flex;
+opacity:1;
+visibility:visible;
+transform:translateY(0);
 }
 
 nav a{
-padding:15px;
-display:block;
+    padding:18px;
+    display:block;
+    color:#fff;
+    font-size:18px;
+    transition:.3s;
+}
+
+nav a:not(:last-child){
+    border-bottom:1px solid rgba(255,215,0,.08);
+}
+
+nav a:hover{
+    background:rgba(255,215,0,.12);
+    color:#FFD700;
 }
 
 .hero-text h1{
