@@ -13,6 +13,17 @@
 
 <style>
 
+.fade-up{
+    opacity:0;
+    transform:translateY(60px);
+    transition:all .8s ease;
+}
+
+.fade-up.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
 *{
     margin:0;
     padding:0;
@@ -132,8 +143,11 @@ box-shadow:0 18px 40px rgba(255,215,0,.45);
 
 .hero-image img{
 width:100%;
-max-height:560px;
-object-fit:cover;
+max-width:520px;
+height:auto;
+display:block;
+margin:auto;
+object-fit:contain;
 border-radius:30px;
 padding:10px;
 background:linear-gradient(135deg,#FFD700,#8a6700,#FFD700);
@@ -302,14 +316,26 @@ font-size:42px;
 font-size:22px;
 }
 
+.hero{
+    flex-direction:column;
+    text-align:center;
+    padding:150px 20px 60px;
+    gap:30px;
+}
+
 .hero-image{
     width:100%;
+    display:flex;
+    justify-content:center;
 }
 
 .hero-image img{
     width:100%;
-    max-height:420px;
-    object-fit:cover;
+    max-width:350px;
+    height:auto;
+    display:block;
+    margin:auto;
+    object-fit:contain;
 }
 
 .btn{
@@ -345,7 +371,35 @@ color:#ddd;
 margin-top:8px;
 letter-spacing:.5px;
 }
+.lightbox{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.92);
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
 
+.lightbox img{
+    max-width:90%;
+    max-height:90%;
+    border-radius:15px;
+    box-shadow:0 0 40px rgba(255,215,0,.35);
+}
+
+.close{
+    position:absolute;
+    top:25px;
+    right:35px;
+    font-size:45px;
+    color:#FFD700;
+    cursor:pointer;
+    font-weight:bold;
+}
 </style>
 
 </head>
@@ -374,7 +428,7 @@ KAMAL CREATION
 
 </header>
 
-<section class="hero" id="home">
+<section class="hero fade-up" id="home">
 
 <div class="hero-text">
 
@@ -385,6 +439,7 @@ KAMAL CREATION
 <p>
 Luxury Wedding Albums • Pre Wedding • Birthday • Engagement • Baby Shoot • Custom Album Designing with Premium Quality.
 </p>
+
 <div class="rating">
 ★★★★★
 <span>500+ Happy Clients • 1000+ Album Designs</span>
@@ -394,26 +449,19 @@ Luxury Wedding Albums • Pre Wedding • Birthday • Engagement • Baby Shoot
 
 <a href="https://wa.me/919919151255?text=Hello%20Kamal%20Creation,%20I%20want%20to%20order%20an%20album."
 class="btn"
-target="_blank"
-rel="noopener">
+target="_blank">
 💬 Order Now on WhatsApp
 </a>
 
 </div>
 
 <div class="hero-image">
-
-<img src="hero.png"
-alt="Luxury Wedding Album"
-loading="eager"
-decoding="async"
-width="700"
-height="700">
-
+<img src="hero.png" alt="Luxury Wedding Album">
 </div>
 
-</section>
-<section id="services">
+</section> 
+
+<section id="services" class="fade-up">
 
 <h2 class="section-title">Our Services</h2>
 
@@ -452,8 +500,7 @@ height="700">
 </div>
 
 </section>
-
-<section id="gallery">
+<section id="gallery" class="fade-up">
 
 <h2 class="section-title">Our Gallery</h2>
 
@@ -517,7 +564,7 @@ height="600">
 
 </section>
 
-<section id="contact">
+<section id="contact" class="fade-up">
 
 <h2 class="section-title">Contact Us</h2>
 
@@ -546,6 +593,44 @@ height="600">
 <p>Premium Wedding Album Designing • Uttar Pradesh • India</p>
 
 </footer>
+
+<div id="lightbox" class="lightbox">
+    <span class="close">&times;</span>
+    <img id="lightbox-img">
+</div>
+
+<script>
+const observer = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("show");
+        }
+    });
+});
+
+document.querySelectorAll(".fade-up").forEach(el=>{
+    observer.observe(el);
+});
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+
+document.querySelectorAll(".photo img").forEach(img=>{
+    img.addEventListener("click",()=>{
+        lightbox.style.display="flex";
+        lightboxImg.src=img.src;
+    });
+});
+
+document.querySelector(".close").onclick=function(){
+    lightbox.style.display="none";
+};
+
+lightbox.onclick=function(e){
+    if(e.target===lightbox){
+        lightbox.style.display="none";
+    }
+};
+</script>
 
 </body>
 </html>
