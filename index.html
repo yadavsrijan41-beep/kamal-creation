@@ -286,6 +286,12 @@ border-top:1px solid rgba(255,215,0,.12);
 color:#bbb;
 font-size:15px;
 }
+.menu-toggle{
+display:none;
+font-size:32px;
+color:#FFD700;
+cursor:pointer;
+}
 
 @media(max-width:768px){ 
     .logo{
@@ -295,22 +301,39 @@ font-size:15px;
 }
 
 header{
-flex-direction:column;
- padding:6px 10px;
-gap:5px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:12px 20px;
+flex-direction:row;
+}
+
+.menu-toggle{
+display:block;
+font-size:32px;
+cursor:pointer;
+color:#FFD700;
 }
 
 nav{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:12px;
+display:none;
+position:absolute;
+top:70px;
+left:0;
 width:100%;
-margin-top:8px;
+background:#111;
+flex-direction:column;
 text-align:center;
+padding:20px 0;
 }
+
+nav.active{
+display:flex;
+}
+
 nav a{
-font-size:15px;
-padding:5px;
+padding:15px;
+display:block;
 }
 
 .hero-text h1{
@@ -375,6 +398,33 @@ font-size:20px;
 .rating span{
 font-size:14px;
 }
+.menu-toggle{
+display:block;
+font-size:32px;
+cursor:pointer;
+color:#FFD700;
+}
+
+nav{
+display:none;
+position:absolute;
+top:70px;
+left:0;
+width:100%;
+background:#111;
+flex-direction:column;
+text-align:center;
+padding:20px 0;
+}
+
+nav.active{
+display:flex;
+}
+
+nav a{
+padding:15px;
+display:block;
+}
 
 }
 .rating{
@@ -428,22 +478,16 @@ letter-spacing:.5px;
 
 <header>
 
-<div class="logo">
-KAMAL CREATION
-</div>
+<div class="logo">KAMAL CREATION</div>
+
+<div class="menu-toggle">☰</div>
 
 <nav>
-
 <a href="#home">Home</a>
-
 <a href="#services">Services</a>
-
 <a href="#gallery">Gallery</a>
-
 <a href="order.html">Order</a>
-
 <a href="#contact">Contact</a>
-
 </nav>
 
 </header>
@@ -650,6 +694,12 @@ lightbox.onclick=function(e){
         lightbox.style.display="none";
     }
 };
+const menuToggle = document.querySelector(".menu-toggle");
+const nav = document.querySelector("nav");
+
+menuToggle.addEventListener("click", () => {
+    nav.classList.toggle("active");
+});
 </script>
 
 </body>
