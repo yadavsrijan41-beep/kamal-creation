@@ -356,8 +356,19 @@ cursor:pointer;
 color:#FFD700;
 }
 .slider{
-max-width:350px;
-height:300px;
+    width:100%;
+    max-width:350px;
+    aspect-ratio:16/11;
+    height:auto;
+    padding:6px;
+    border-radius:22px;
+}
+.slide{
+    inset:6px;
+    width:calc(100% - 12px);
+    height:calc(100% - 12px);
+    object-fit:cover;
+    border-radius:18px;
 }
 nav{
 display:none;
