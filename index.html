@@ -37,6 +37,8 @@ body{
     radial-gradient(circle at top,#3a2500 0%,#0b0b0b 35%,#000 100%);
     color:#fff;
     overflow-x:hidden;
+
+    animation: fadeIn .8s ease;
 }
 
 header{
@@ -55,6 +57,7 @@ border-bottom:1px solid rgba(255,215,0,.18);
 box-shadow:0 10px 35px rgba(0,0,0,.35);
 z-index:1000;
 transition:.4s;
+border-radius:0 0 18px 18px;
 }
 
 .logo{
@@ -161,6 +164,37 @@ transform:scale(1.04) rotate(.5deg);
 box-shadow:
 0 0 45px rgba(255,215,0,.5),
 0 30px 70px rgba(0,0,0,.65);
+}
+.slider{
+position:relative;
+width:100%;
+max-width:620px;
+height:500px;
+margin:auto;
+overflow:hidden;
+border-radius:30px;
+background:linear-gradient(135deg,#FFD700,#8a6700,#FFD700);
+padding:10px;
+box-shadow:0 0 30px rgba(255,215,0,.35),
+0 25px 60px rgba(0,0,0,.55);
+}
+
+.slide{
+position:absolute;
+top:10px;
+left:10px;
+width:calc(100% - 20px);
+height:calc(100% - 20px);
+object-fit:cover;
+border-radius:20px;
+opacity:0;
+transition:opacity .8s ease-in-out;
+transform:scale(1.05);
+}
+
+.slide.active{
+opacity:1;
+transform:scale(1);
 }
 
 section{
@@ -314,7 +348,10 @@ font-size:32px;
 cursor:pointer;
 color:#FFD700;
 }
-
+.slider{
+max-width:350px;
+height:300px;
+}
 nav{
 display:none;
 position:fixed;
@@ -483,6 +520,14 @@ letter-spacing:.5px;
     cursor:pointer;
     font-weight:bold;
 }
+@keyframes fadeIn{
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:1;
+    }
+}
 </style>
 
 </head>
@@ -533,9 +578,16 @@ target="_blank">
 </div>
 
 <div class="hero-image">
-<img src="hero.png" alt="Luxury Wedding Album">
+
+<div class="slider">
+
+<img src="hero1.png" class="slide active" alt="Wedding Album Design 1">
+<img src="hero2.png" class="slide" alt="Wedding Album Design 2">
+<img src="hero3.png" class="slide" alt="Wedding Album Design 3">
+<img src="hero4.png" class="slide" alt="Wedding Album Design 4">
 </div>
 
+</div>
 </section> 
 
 <section id="services" class="fade-up">
@@ -724,6 +776,8 @@ const nav = document.querySelector("nav");
 
 menuToggle.addEventListener("click", () => {
     nav.classList.toggle("active");
+    menuToggle.textContent =
+        nav.classList.contains("active") ? "✕" : "☰";
 });
 // Mobile menu close after clicking any link
 document.querySelectorAll("nav a").forEach(link => {
@@ -731,6 +785,24 @@ document.querySelectorAll("nav a").forEach(link => {
         nav.classList.remove("active");
     });
 });
+const slides = document.querySelectorAll(".slide");
+
+let current = 0;
+
+setInterval(() => {
+
+slides[current].classList.remove("active");
+
+current++;
+
+if(current >= slides.length){
+current = 0;
+}
+
+slides[current].classList.add("active");
+
+},3000);
+
 </script>
 
 </body>
